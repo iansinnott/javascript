@@ -1,7 +1,13 @@
-# Airbnb JavaScript Style Guide() {
+# Ian's JavaScript Style Guide() {
 
 *A mostly reasonable approach to JavaScript*
 
+## Inspiration for this fork
+
+This is my personal fork of Airbnb's well known [JavaScript Style Guide](https://github.com/airbnb/javascript). I created it because generally I enjoy the stylistic choices made by Airbnb, but I disagree on a few key points. Namely: 
+
+- Semicolons: *Nope*. See section for details on why.
+- Constructors: Overwriting prototypes is *OK*, just be aware of the consequences.
 
 ## <a name='TOC'>Table of Contents</a>
 
@@ -450,7 +456,7 @@
       return true;
     }
 
-    // good
+    // good, no point assigning the var if we just end up returning false
     function() {
       if (!arguments.length) {
         return false;
@@ -782,6 +788,7 @@
     var x = y + 5;
     ```
 
+  <!-- Todo: Determine whether this is necessary -->
   - Place an empty newline at the end of the file.
 
     ```javascript
@@ -799,6 +806,7 @@
 
     ```
 
+  <!-- Todo: Determine whether this is necessary -->
   - Use indentation when making long method chains.
 
     ```javascript
@@ -897,26 +905,34 @@
 
 ## <a name='semicolons'>Semicolons</a>
 
-  - **Yup.**
+  - **Nope.** Only when necessary.
+
+  Semicolons truly are **optional** in almost all cases. It is up to the individual developer to know the exceptional cases where a semicolon should be included and insert them manually. Necessary semicolons should be inserted at the start of a new line. For more info see: 
+
+  - <http://mislav.uniqpath.com/2010/05/semicolons/>
+  - <http://inimino.org/~inimino/blog/javascript_semicolons>
 
     ```javascript
+
     // bad
+    (function() {
+      var name = 'Skywalker';
+      return name;
+    })();
+
+    // good
     (function() {
       var name = 'Skywalker'
       return name
     })()
 
-    // good
-    (function() {
-      var name = 'Skywalker';
-      return name;
-    })();
+    // really bad (will break)
+    a = b + c
+    (d + e).print()
 
     // good
-    ;(function() {
-      var name = 'Skywalker';
-      return name;
-    })();
+    a = b + c
+    ;(d + e).print()
     ```
 
     **[[⬆]](#TOC)**
@@ -1066,6 +1082,7 @@
     this._firstName = 'Panda';
     ```
 
+  <!-- Todo: Determine if I like this or want to go with 'self' -->
   - When saving a reference to `this` use `_this`.
 
     ```javascript
@@ -1167,6 +1184,7 @@
 
 ## <a name='constructors'>Constructors</a>
 
+  <!-- Todo: rewrite this. I don't necessarily agree -->
   - Assign methods to the prototype object, instead of overwriting the prototype with a new object. Overwriting the prototype makes inheritance impossible: by resetting the prototype you'll overwrite the base!
 
     ```javascript
@@ -1504,11 +1522,13 @@
   - :ru: **Russian**: [uprock/javascript](https://github.com/uprock/javascript)
   - :bg: **Bulgarian**: [borislavvv/javascript](https://github.com/borislavvv/javascript)
 
-## <a name='guide-guide'>The JavaScript Style Guide Guide</a>
+## About The Style Guide
 
-  - [Reference](https://github.com/airbnb/javascript/wiki/The-JavaScript-Style-Guide-Guide)
+  This style guide was inspired in large part by the [Airbnb Javascript Style Guide](https://github.com/airbnb/javascript). I decided to use theirs as a base, since I agree with much of what is there. There are however, a few points as noted at the top, on which I personally prefer a different style, and thus I created this to consolidate my thoughs on JavaScript style. This is also a reference for myself whenever I forget about a style point that I have decided in the past. 
 
-## <a name='authors'>Contributors</a>
+  If you have read down to here, I hope this guide has proved helpful.
+
+## <a name='authors'>Original Contributors to Airbnb Style Guide</a>
 
   - [View Contributors](https://github.com/airbnb/javascript/graphs/contributors)
 
@@ -1540,5 +1560,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 **[[⬆]](#TOC)**
 
-# };
+# }
 
