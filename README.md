@@ -911,6 +911,7 @@ This is my personal fork of Airbnb's well known [JavaScript Style Guide](https:/
 
   - <http://mislav.uniqpath.com/2010/05/semicolons/>
   - <http://inimino.org/~inimino/blog/javascript_semicolons>
+  - <http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding>
 
     ```javascript
 
